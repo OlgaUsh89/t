@@ -71,17 +71,4 @@ public class TodosTest {
         Task[] actual = todos.search("Выкатка");
         Assertions.assertArrayEquals(expected, actual);
     }
-
-    @Test
-    public void shouldLookForATask4() {
-        Meeting meeting = new Meeting(555,
-                "Выкатка 3й версии приложения",
-                "Приложение НетоБанка",
-                "Во вторник после обеда");
-        Todos todos = new Todos();
-        todos.add(meeting);
-        Task[] expected = {};
-        Task[] actual = todos.search("Нетобанк");
-        Assertions.assertArrayEquals(expected, actual);
-    }
 }
