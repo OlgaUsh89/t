@@ -9,22 +9,30 @@ public class TaskTest {
     public void shouldSearchByRequest() {
         SimpleTask simpleTask = new SimpleTask(1, "Позвонить родителям");
 
-        Assertions.assertEquals(true, simpleTask.matches("Позвонить родителям"));
-        Assertions.assertEquals(false, simpleTask.matches("Убрать дом"));
+        Assertions.assertTrue(simpleTask.matches("Позвонить родителям"));
+        Assertions.assertFalse(simpleTask.matches("Убрать дом"));
 
     }
 
     @Test
-    public void shouldSearchByRequest2() {
+    public void shouldSearchByRequest22() {
         String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
         Epic epic = new Epic(1, subtasks);
 
-        Assertions.assertEquals(true, epic.matches("Молоко"));
-        Assertions.assertEquals(false, epic.matches("Сыр"));
+        Assertions.assertTrue(epic.matches("Молоко"));
+        Assertions.assertFalse(epic.matches("Сыр"));
+    }
+
+    public void shouldSearchByRequest5() {
+        Meeting meeting = new Meeting(555,
+                "Выкатка 3й версии приложения",
+                "Приложение НетоБанка",
+                "Во вторник после обеда");
+
+        Assertions.assertEquals(true, meeting.matches("Приложение"));
 
     }
 
-    @Test
     public void shouldSearchByRequest3() {
         Meeting meeting = new Meeting(555,
                 "Выкатка 3й версии приложения",
@@ -33,8 +41,8 @@ public class TaskTest {
 
         Assertions.assertEquals(true, meeting.matches("Приложение"));
         Assertions.assertEquals(false, meeting.matches("Сбер"));
-
     }
+
 }
 
 
